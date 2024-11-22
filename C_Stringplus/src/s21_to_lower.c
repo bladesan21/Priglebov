@@ -1,0 +1,27 @@
+#include "s21_string.h"
+
+/*
+ * Create copy of str transformed into lower register.
+ *
+ * return: Void pointer to copied string.
+ * void* - copied string
+ * s21_NULL - function failed
+ *
+ * Оставил тестовый main и другую реализацию данной функции в комментах
+ */
+
+void *s21_to_lower(const char *str) {
+  char *our_str1 = s21_NULL;
+  if (str) {
+    our_str1 = (char *)malloc((s21_strlen(str) + 1) * sizeof(char));
+  }
+  if (our_str1) {
+    s21_strncpy(our_str1, str, s21_strlen(str) + 1);
+    for (char *i = our_str1; *i; i++) {
+      if (*i >= 'A' && *i <= 'Z') {
+        *i += 32;
+      }
+    }
+  }
+  return (void *)our_str1;
+}
